@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>Flight Tracker</title>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <header>
+      <h1>Flight Tracker</h1>
+      <div class="actions">
+        <%== yield_content :header_links %>
+      </div>
+    </header>
+
+    <% if session[:error] %>
+      <div class="flash error">
+        <p><%= session.delete(:error) %></p>
+      </div>
+    <% end %>
+
+    <% if session[:success] %>
+      <div class="flash success">
+        <p><%= session.delete(:success) %></p>
+      </div>
+    <% end %>
+
+    <main>
+      <%== yield %>
+    </main>
+  </body>
+</html>

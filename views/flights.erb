@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Airline</th>
+      <th scope="col">Flight Number</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flight_list.each do |tuple| %>
+      <tr>
+        <td><%= tuple["id"] %></td>
+        <td><%= tuple["airline"] %></td>
+        <td><%= tuple["flight_number"] %></td>
+        <td><%= tuple["destination"] %></td>
+        <td><%= get_date(tuple["departure_time"]) %></td>
+        <td><%= [get_time(tuple["departure_time"]), tuple["departure_time_zone"]].join(" ") %></td>
+        <td>
+          <form class="edit" action="/flights/<%= tuple["id"] %>/update" method="get">
+            <button type="submit" class="delete">Edit</button>
+          </form>
+        </td>
+        <td>
+          <form class="delete" action="/flights/<%= tuple["id"] %>/delete" method="post">
+            <button type="submit" class="delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a class="add" href="/flights/new">Add Flight</a>

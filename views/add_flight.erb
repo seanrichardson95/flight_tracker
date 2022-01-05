@@ -1,0 +1,50 @@
+<h2>Please enter the flight information:</h2>
+<form action="<%= @post_action %>" method="post">
+  <dl>
+    <dt>
+      <label for="airline">Airline: </label>
+    </dt>
+    <dd>
+      <input type="text" name="airline" placeholder="e.g. Delta" value="<%= @flight["airline"] %>">
+    </dd>
+
+    <dt>
+      <label for="flight_number">Flight Number: </label>
+    </dt>
+    <dd>
+      <input type="text" name="flight_number" placeholder="e.g. 1234" value="<%= @flight["flight_number"] %>">
+    </dd>
+
+    <dt>
+      <label for="destination">Destination: </label>
+    </dt>
+    <dd>
+      <input type="text" name="destination" value="<%= @flight["destination"] %>" placeholder="e.g. DFW">
+    </dd>
+
+    <dt>
+      <label for="date">Departure Date: </label>
+    </dt>
+    <dd>
+      <input type="text" name="date" placeholder="yyyy-mm-dd" value="<%= get_date(@flight["departure_time"]) %>">
+    </dd>
+
+    <dt>
+      <label for="time">Departure Time: </label>
+    </dt>
+    <dd>
+      <input type="text" name="time" placeholder="hh:mm" value="<%= get_time(@flight["departure_time"]) %>">
+    </dd>
+
+    <dt>
+      <label for="time_zone">Departure Time Zone (US only): </label>
+    </dt>
+    <dd>
+      <input type="text" name="departure_time_zone" placeholder="e.g. EST" value="<%= @flight["departure_time_zone"] %>">
+    </dd>
+  </dl>
+  <fieldset class="actions">
+    <input type="submit" value="Save">
+    <a href="/flights">Cancel</a>
+  </fieldset>
+</form>
